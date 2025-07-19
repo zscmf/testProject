@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>生产计划查询</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: center;
+      }
+      .controls {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>生产计划查询</h2>
+
+    <!-- 搜索栏 -->
+    <input type="text" id="searchInput" placeholder="请输入 PlanId" />
+    <button onclick="loadData()">搜索</button>
+    <button onclick="exportCSV()">导出</button>
+
+    <!-- 表格 -->
+    <table>
+      <thead>
+        <tr>
+          <th>PlanId</th>
+          <th>需求类型</th>
+          <th>供应类型</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <!-- 动态插入 -->
+      </tbody>
+    </table>
+
+    <!-- 分页控制 -->
+    <div class="controls">
+      <button onclick="prevPage()">上一页</button>
+      <button onclick="nextPage()">下一页</button>
+      <label>每页行数：</label>
+      <select id="pageSizeSelect" onchange="changePageSize()">
+        <option value="5">5</option>
+        <option value="10" selected>10</option>
+        <option value="15">15</option>
+      </select>
+      <span id="pageInfo"></span>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
